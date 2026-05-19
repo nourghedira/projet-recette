@@ -1,0 +1,46 @@
+pour avoir un menu responsive :
+dans le terminal : npm install @popperjs/core
+
+Ensuite dans angular.json → scripts ajoute :
+json"scripts": [
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+]
+
+Dans ton header.component.html, remplace tout par :
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow-sm">
+  <a class="navbar-brand fw-bold fs-4" routerLink="/liste">
+    🍽️ RecetteBook
+  </a>
+
+  <!-- Bouton burger pour mobile -->
+  <button class="navbar-toggler" type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navMenu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Menu -->
+  <div class="collapse navbar-collapse" id="navMenu">
+    <div class="navbar-nav ms-auto gap-2 mt-2 mt-lg-0">
+      <button routerLink="liste" class="btn btn-sm btn-outline-light">
+        📋 Liste des recettes
+      </button>
+      <button routerLink="ajouter" class="btn btn-sm btn-warning text-dark fw-bold">
+        ➕ Ajouter recette
+      </button>
+      <button routerLink="categories" class="btn btn-sm btn-outline-info">
+        🏷️ Catégories
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+table responsive : Juste ajouter table-responsive sur le div qui entoure le tableau ( dns gestionrecette et gestion categorie html)
+
+Formulaires (ajout/edit recette) → responsive grâce à row + col-md-6
+Cards → responsive automatiquement
+Badges ingrédients → responsive grâce à flex-wrap
+Tableaux → responsive avec table-responsive
+Navbar → responsive avec le bouton burger
+

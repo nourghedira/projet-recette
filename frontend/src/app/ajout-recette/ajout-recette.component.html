@@ -1,0 +1,132 @@
+<div class="container mt-4" style="max-width: 700px;">
+  <div class="card shadow-sm border-0">
+
+    <div class="card-header text-white d-flex align-items-center gap-2"
+         style="background: #1a1a2e;">
+      <i class="bi bi-journal-plus fs-5"></i>
+      <h4 class="mb-0">Ajouter une recette</h4>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="formRecette" (ngSubmit)="submit()">
+
+       
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-card-text me-1"></i>Nom *
+          </label>
+          <input formControlName="nom" type="text" class="form-control"
+            placeholder="Ex : Couscous royal"
+            [ngClass]="{ 'is-invalid': submitted && formRecette.get('nom')?.invalid }">
+          <div class="invalid-feedback">Le nom est obligatoire.</div>
+        </div>
+
+       
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-tag me-1"></i>Catégorie *
+          </label>
+          <select formControlName="categorie" class="form-select"
+            [ngClass]="{ 'is-invalid': submitted && formRecette.get('categorie')?.invalid }">
+            <option value="">-- Choisir une catégorie --</option>
+            <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.nom }}</option>
+          </select>
+          <div class="invalid-feedback">La catégorie est obligatoire.</div>
+        </div>
+
+       
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-text-paragraph me-1"></i>Description *
+          </label>
+          <textarea formControlName="description" class="form-control" rows="3"
+            placeholder="Décrivez la recette..."
+            [ngClass]="{ 'is-invalid': submitted && formRecette.get('description')?.invalid }">
+          </textarea>
+          <div class="invalid-feedback">La description est obligatoire.</div>
+        </div>
+
+       
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-basket me-1"></i>Ingrédients (séparés par virgule)
+          </label>
+          <input formControlName="ingredients" type="text" class="form-control"
+            placeholder="Ex : tomates, oignons, huile d'olive">
+        </div>
+
+        
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-list-ol me-1"></i>Étapes de préparation *
+          </label>
+          <textarea formControlName="etapes" class="form-control" rows="5"
+            placeholder="1. Éplucher les légumes..."
+            [ngClass]="{ 'is-invalid': submitted && formRecette.get('etapes')?.invalid }">
+          </textarea>
+          <div class="invalid-feedback">Les étapes sont obligatoires.</div>
+        </div>
+
+       
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold">
+              <i class="bi bi-clock me-1"></i>Durée (minutes) *
+            </label>
+            <input formControlName="duree" type="number" class="form-control"
+              placeholder="30"
+              [ngClass]="{ 'is-invalid': submitted && formRecette.get('duree')?.invalid }">
+            <div class="invalid-feedback">La durée est obligatoire.</div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold">
+              <i class="bi bi-bar-chart me-1"></i>Difficulté
+            </label>
+            <select formControlName="difficulte" class="form-select">
+              <option value="Facile">Facile</option>
+              <option value="Moyen">Moyen</option>
+              <option value="Difficile">Difficile</option>
+            </select>
+          </div>
+        </div>
+
+        
+        <div class="mb-4">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-image me-1"></i>Image de la recette (optionnel)
+          </label>
+
+         
+          <div class="upload-zone" (click)="fileInput.click()" *ngIf="!imagePreview">
+            <i class="bi bi-cloud-upload upload-icon"></i>
+            <p class="mb-1 fw-semibold">Cliquer pour choisir une image</p>
+            <p class="text-muted small mb-0">JPG, PNG, WEBP — max 5 Mo</p>
+          </div>
+
+         
+          <div class="image-preview-box" *ngIf="imagePreview">
+            <img [src]="imagePreview" alt="Prévisualisation" class="preview-img">
+            <button type="button" class="btn-remove-img" (click)="supprimerImage()">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+
+          <input #fileInput type="file" accept="image/*"
+                 (change)="onImageSelected($event)"
+                 style="display: none;">
+        </div>
+
+        <div class="d-flex gap-2 justify-content-end">
+          <a routerLink="/liste" class="btn btn-outline-secondary">
+            <i class="bi bi-x-circle me-1"></i>Annuler
+          </a>
+          <button type="submit" class="btn text-white fw-bold"
+                  style="background: #1a1a2e;">
+            <i class="bi bi-check-circle me-1"></i>Enregistrer
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

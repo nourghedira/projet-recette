@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">🏷️ Gestion des Catégories</h2>
+    <button routerLink="/categories/ajouter" class="btn btn-dark">➕ Nouvelle catégorie</button>
+  </div>
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body p-0 table-responsive">
+      <table class="table table-hover table-striped mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cat of categories">
+            <td class="fw-semibold">{{ cat.nom }}</td>
+            <td class="text-muted">{{ cat.description || '—' }}</td>
+            <td>
+              <a [routerLink]="['/categories/edit', cat.id]" class="btn btn-sm btn-warning me-1">
+                ✏️ Modifier
+              </a>
+              <button (click)="deleteCategorie(cat)" class="btn btn-sm btn-danger">
+                🗑 Supprimer
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="categories.length === 0">
+            <td colspan="3" class="text-center text-muted py-4">Aucune catégorie.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

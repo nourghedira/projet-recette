@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark px-4" style="background: #1a1a2e;">
+  <a class="navbar-brand fw-bold fs-5 d-flex align-items-center gap-2" routerLink="/home">
+    <i class="bi bi-book-half text-warning"></i>
+    Recette Mexicaine
+  </a>
+
+  <button class="navbar-toggler" type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navMenu">
+    <div class="navbar-nav ms-auto gap-2 mt-2 mt-lg-0 align-items-center">
+
+      
+      <a routerLink="/home" routerLinkActive="active-link"
+         [routerLinkActiveOptions]="{exact:true}"
+         class="nav-btn">
+        <i class="bi bi-house-door"></i> Accueil
+      </a>
+      <a routerLink="/liste" routerLinkActive="active-link" class="nav-btn">
+        <i class="bi bi-list-ul"></i> Recettes
+      </a>
+
+     
+      <a routerLink="/ajouter" class="nav-btn nav-btn-add"
+        *ngIf="authService.isLoggedIn()">
+        <i class="bi bi-plus-circle"></i> Ajouter
+      </a>
+      <a routerLink="/categories" routerLinkActive="active-link" class="nav-btn"
+        *ngIf="authService.isLoggedIn()">
+        <i class="bi bi-tag"></i> Catégories
+      </a>
+
+      
+      <a routerLink="/login" class="nav-btn"
+        *ngIf="!authService.isLoggedIn()">
+        <i class="bi bi-lock"></i> Connexion
+      </a>
+      <a (click)="logout()" class="nav-btn nav-btn-danger" style="cursor:pointer;"
+        *ngIf="authService.isLoggedIn()">
+        <i class="bi bi-box-arrow-right"></i> Déconnexion
+      </a>
+
+    </div>
+  </div>
+</nav>

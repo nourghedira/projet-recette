@@ -1,0 +1,85 @@
+<div class="container mt-4" style="max-width: 750px;" *ngIf="recette">
+
+  <a routerLink="/liste" class="btn btn-outline-secondary btn-sm mb-3">
+    <i class="bi bi-arrow-left me-1"></i>Retour à la liste
+  </a>
+
+  <!-- Hero card -->
+  <div class="card border-0 shadow mb-4 overflow-hidden">
+    <img *ngIf="recette.image" [src]="recette.image"
+         class="card-img-top" style="height: 270px; object-fit: cover;">
+    <div *ngIf="!recette.image"
+         class="d-flex align-items-center justify-content-center bg-light"
+         style="height: 200px;">
+      <i class="bi bi-egg-fried" style="font-size: 5rem; color: #ccc;"></i>
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-start mb-2">
+        <h2 class="fw-bold mb-0">{{ recette.nom }}</h2>
+        <span class="badge ms-2"
+          [ngClass]="{
+            'bg-success':           recette.difficulte === 'Facile',
+            'bg-warning text-dark': recette.difficulte === 'Moyen',
+            'bg-danger':            recette.difficulte === 'Difficile'
+          }">
+          {{ recette.difficulte }}
+        </span>
+      </div>
+      <div class="d-flex align-items-center gap-3 text-muted mb-3">
+        <span class="badge bg-info text-dark">
+          <i class="bi bi-bookmark-fill me-1"></i>{{ getCategorieNom(recette.categorie) }}
+        </span>
+        <span>
+          <i class="bi bi-clock me-1"></i>{{ recette.duree }} minutes
+        </span>
+      </div>
+      <p class="mb-0">{{ recette.description }}</p>
+    </div>
+  </div>
+
+  <!-- Ingrédients -->
+  <div class="card border-0 shadow-sm mb-4" *ngIf="recette.ingredients?.length">
+    <div class="card-header fw-bold text-dark"
+         style="background: #fff8e1; border-left: 4px solid #ffc107;">
+      <i class="bi bi-basket me-2"></i>Ingrédients
+    </div>
+    <div class="card-body">
+      <div class="d-flex flex-wrap gap-2">
+        <span class="badge bg-light text-dark border px-3 py-2"
+              *ngFor="let ing of recette.ingredients"
+              style="font-size: 0.85rem;">
+          <i class="bi bi-check-circle me-1 text-success"></i>{{ ing }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Etapes -->
+  <div class="card border-0 shadow-sm mb-4">
+    <div class="card-header fw-bold text-white"
+         style="background: #1a1a2e;">
+      <i class="bi bi-list-ol me-2"></i>Préparation
+    </div>
+    <div class="card-body">
+      <p style="white-space: pre-line; line-height: 1.8; margin: 0;">
+        {{ recette.etapes }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="d-flex gap-2">
+    <a [routerLink]="['/edit', recette.id]" class="btn btn-warning">
+      <i class="bi bi-pencil me-2"></i>Modifier
+    </a>
+    <a routerLink="/liste" class="btn btn-outline-secondary">
+      <i class="bi bi-arrow-left me-1"></i>Retour
+    </a>
+  </div>
+
+</div>
+
+<div *ngIf="!recette" class="text-center mt-5 text-muted">
+  <i class="bi bi-hourglass-split" style="font-size: 2rem;"></i>
+  <p class="mt-2">Chargement en cours...</p>
+</div>

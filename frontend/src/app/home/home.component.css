@@ -1,0 +1,230 @@
+.home-wrapper {
+  min-height: 100vh;
+  background: #f4f6fb;
+}
+
+
+.hero-section {
+ background: url('/assets/images/bgmxicain.png')
+    center/cover no-repeat;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+}
+.hero-overlay {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(26,26,46,0.88), rgba(26,26,46,0.88));
+  padding: 60px 20px;
+}
+.hero-icon {
+  font-size: 3.5rem;
+  color: #ffc107;
+  line-height: 1;
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.hero-subtitle {
+  font-size: 1.15rem;
+  opacity: 0.88;
+  margin-bottom: 0;
+}
+
+.stat-card {
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  color: white;
+  transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-6px); }
+.stat-icon   { font-size: 2rem; display: block; margin-bottom: 10px; }
+.stat-number { font-size: 2.8rem; font-weight: 800; line-height: 1; }
+.stat-label  { font-size: 0.9rem; opacity: 0.9; margin-top: 6px; }
+
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1a1a2e;
+}
+
+
+.cat-card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px 16px;
+  text-align: center;
+  border: 2px solid #f0f0f0;
+  cursor: pointer;
+  transition: all 0.22s;
+  height: 100%;
+}
+.cat-card:hover {
+  border-color: #ffc107;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+}
+.cat-card-icon {
+  font-size: 2rem;
+  color: #ffc107;
+  margin-bottom: 10px;
+}
+.cat-card-nom   { font-weight: 700; font-size: 1rem; margin: 0 0 4px; color: #1a1a2e; }
+.cat-card-count { color: #ffc107; font-weight: 600; font-size: 0.82rem; margin: 0 0 6px; }
+.cat-card-desc  { font-size: 0.78rem; color: #888; margin: 0; }
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-search {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+.filter-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 1rem;
+  z-index: 1;
+}
+.filter-select { width: 180px; }
+
+
+.recipe-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: all 0.25s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.11);
+}
+.recipe-card-img {
+  height: 240px;
+  background: #f0f2f5;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.recipe-card-img-placeholder {
+  font-size: 3.5rem;
+  color: #ccc;
+}
+.recipe-diff-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+.badge-facile    { background: #d1fae5; color: #065f46; }
+.badge-moyen     { background: #fef3c7; color: #92400e; }
+.badge-difficile { background: #fee2e2; color: #991b1b; }
+
+.recipe-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.recipe-cat-label {
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: #ffc107;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.recipe-card-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 6px 0 8px;
+  color: #1a1a2e;
+}
+.recipe-card-desc {
+  font-size: 0.84rem;
+  color: #6c757d;
+  flex: 1;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+.recipe-card-meta {
+  display: flex;
+  gap: 14px;
+  font-size: 0.82rem;
+  color: #888;
+  margin-bottom: 14px;
+}
+.recipe-card-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.btn-card-detail {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 18px;
+  border-radius: 8px;
+  background: #1a1a2e;
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.btn-card-detail:hover { background: #2d2d4e; color: white; }
+.btn-card-edit {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: #fff8e1;
+  color: #b8860b;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 1px solid #ffc107;
+  transition: all 0.2s;
+}
+.btn-card-edit:hover { background: #ffc107; color: #1a1a2e; }
+
+
+.empty-box {
+  text-align: center;
+  padding: 50px 20px;
+  background: white;
+  border-radius: 16px;
+  border: 1px dashed #ddd;
+}
+.empty-icon    { font-size: 4rem; color: #ccc; display: block; margin-bottom: 16px; }
+.empty-icon-sm { font-size: 2rem; color: #ccc; display: block; margin-bottom: 10px; }
+.stat-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+  color: #ffc107;
+}
